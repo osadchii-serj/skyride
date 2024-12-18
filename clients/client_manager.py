@@ -84,3 +84,6 @@ class Client:
             print(f"Ошибка удаления таблицы {name_table}")
         finally:
             connection.close()
+
+    def add_data(self):
+        pass
