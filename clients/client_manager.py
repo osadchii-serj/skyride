@@ -1,12 +1,13 @@
 import sqlite3 as sq
 from faker import Faker
 from dataclasses import dataclass
+from icecream import ic
 
 
 @dataclass
 class Client:
     faker = Faker("ru_RU")
-    data_db = {
+    table_fields = {
         "clients":
             """
                 client_id INTEGER PRIMARY KEY,
@@ -52,7 +53,8 @@ class Client:
     path_db = "clients/"
 
     def connection_db(self):
-        for db_name, fields in self.data_db.items():
+        ic()
+        for db_name, fields in self.table_fields.items():
             try:
                 connection = sq.connect(f"{self.path_db}{db_name}.db")
                 cursor = connection.cursor()
@@ -64,9 +66,9 @@ class Client:
                     )
                     """
                 )
-                print(f"Создана БД {self.path_db}{db_name}")
+                ic(f"Создана БД {self.path_db}{db_name}")
             except:
-                print("Ошибка подключения к базе")
+                ic("Ошибка подключения к базе")
             finally:
                 connection.close()
 
@@ -79,9 +81,9 @@ class Client:
                 DROP TABLE IF EXISTS {name_table}
                 """
             )
-            print(f"Таблица {name_table} удалена")
+            ic(f"Таблица {name_table} удалена")
         except:
-            print(f"Ошибка удаления таблицы {name_table}")
+            ic(f"Ошибка удаления таблицы {name_table}")
         finally:
             connection.close()
 
