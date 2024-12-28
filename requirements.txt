@@ -1,9 +1,15 @@
 asttokens==3.0.0
+certifi==2024.12.14
+charset-normalizer==3.4.0
 colorama==0.4.6
 executing==2.1.0
 Faker==33.1.0
 icecream==2.1.3
+idna==3.10
+pillow==11.0.0
 Pygments==2.18.0
 python-dateutil==2.9.0.post0
+requests==2.32.3
 six==1.17.0
 typing_extensions==4.12.2
+urllib3==2.2.3
