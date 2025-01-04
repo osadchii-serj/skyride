@@ -18,7 +18,7 @@ def create_gender():
 
 
 user_1 = SkyRiderClient(GlobalFinanceBank())
-user_1.registration(
+user_1.create_user(
     fake.phone_number(),
     fake.email(),
     fake.user_name(),
@@ -50,7 +50,7 @@ user_1.order_taxi(
 
 )
 
-user_1.payment.registration(
+user_1.payment.registration_user_bank(
     user_1.first_name,
     user_1.patronymic,
     user_1.last_name,
@@ -65,22 +65,4 @@ user_1.payment.create_bank_card(
 
 user_1.payment.transfer_money(
     fake.random_int(min=-1000, max=10000)
-)
-
-ic(
-    user_1.phone,
-    user_1.email,
-    user_1.login,
-    user_1.password,
-    user_1.first_name,
-    user_1.patronymic,
-    user_1.last_name,
-    user_1.age,
-    user_1.gender,
-    user_1.address,
-    user_1.city,
-    user_1.country,
-    user_1.starting_point,
-    user_1.final_point,
-    user_1.date_taxi_order,
 )

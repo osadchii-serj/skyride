@@ -2,7 +2,7 @@ if __name__ == "__main__":
     from interfaces import Payment
 else:
     from .interfaces import Payment
-    
+
 from icecream import ic
 from dataclasses import dataclass
 
@@ -19,7 +19,7 @@ class GlobalFinanceBank(Payment):
     provider = None
     balance = 0
 
-    def registration(self, first_name: str, patronymic: str, last_name: str):
+    def registration_user_bank(self, first_name: str, patronymic: str, last_name: str):
         """Регистрация клиента
 
         Args:
@@ -31,11 +31,6 @@ class GlobalFinanceBank(Payment):
         self.first_name = first_name
         self.patronymic = patronymic
         self.last_name = last_name
-        ic(
-            f"Банк: {self.__class__.__name__}",
-            f"Пользователь: {self.first_name} {
-                self.patronymic} {self.last_name}",
-        )
 
     def create_bank_card(self, credit_card_number: str, credit_card_expire: str, credit_card_security_code: str, credit_card_provider: str):
         """Создать карту
@@ -51,20 +46,7 @@ class GlobalFinanceBank(Payment):
         self.expiry = credit_card_expire
         self.cvv = credit_card_security_code
         self.provider = credit_card_provider
-        ic(
-            "Карта создана",
-            self.card_number,
-            self.expiry,
-            self.cvv,
-            self.provider
-        )
 
     def transfer_money(self, amount: int):
         ic()
         self.balance = amount
-        ic(
-            f"Перевод средств {amount}",
-            self.balance
-        )
-
-

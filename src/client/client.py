@@ -2,13 +2,14 @@ if __name__ == "__main__":
     from interfaces import Client
 else:
     from .interfaces import Client
-    
+
 from icecream import ic
 from dataclasses import dataclass
 
+
 @dataclass
 class SkyRiderClient(Client):
-    payment: str
+    payment: object
     email = None
     phone = None
     login = None
@@ -27,7 +28,7 @@ class SkyRiderClient(Client):
     comment = None
     rating = None
 
-    def registration(self, phone=None, email=None, login=None, password=None):
+    def create_user(self, phone=None, email=None, login=None, password=None):
         """Регистрация пользователя
 
         Args:
@@ -42,10 +43,6 @@ class SkyRiderClient(Client):
             self.email = email
             self.login = login
             self.password = password
-            ic(f"Пользователь: {self.login} зарегистрирован")
-        else:
-            ic("Ошибка регистрации")
-            
 
     def set_bio(self, first_name: str, patronymic: str, last_name: str, age: int, gender: str):
         """Добавить биографию
@@ -63,14 +60,6 @@ class SkyRiderClient(Client):
         self.last_name = last_name
         self.age = age
         self.gender = gender
-        ic(
-            self.first_name,
-            self.patronymic,
-            self.last_name,
-            self.age,
-            self.gender,
-            "Данные биографии добавлены"
-        )
 
     def set_address(self, address: str, city: str, country: str):
         """Добавить адрес
@@ -84,12 +73,6 @@ class SkyRiderClient(Client):
         self.address = address
         self.city = city
         self.country = country
-        ic(
-            "Адрес добавлен",
-            self.address,
-            self.city,
-            self.country
-        )
 
     def order_taxi(self, start_point: str, final_point: str, data: str):
         """Заказать такси
@@ -103,9 +86,3 @@ class SkyRiderClient(Client):
         self.starting_point = start_point
         self.final_point = final_point
         self.date_taxi_order = data
-        ic(
-            "Заказ такси:",
-            f"Стартовая точка: {self.starting_point}",
-            f"Финальная точка: {self.final_point}",
-            f"Дата: {self.date_taxi_order}"
-        )

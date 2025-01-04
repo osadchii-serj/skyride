@@ -7,7 +7,7 @@ from abc import (
 class Payment(ABC):
 
     @abstractmethod
-    def registration(self):
+    def registration_user_bank(self):
         raise NotImplementedError
 
     @abstractmethod
